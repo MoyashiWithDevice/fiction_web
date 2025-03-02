@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ykeyb</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+</head>
+<body>
+  <div id="cursor" class="cursor">
+    <div class="cursor-inner">★</div>
+  </div>
+  <header>
+    <h2 class="title"><a href="top.html">Ykeyb</a></h2>
+    <ul class="nav-menu">
+      <li><a href="products.html">製品一覧</a></li>
+      <li><a href="form.html">お問い合わせ</a></li>
+      <li><a href="login.html">ログイン</a></li>
+    </ul>
+  </header>
+
+  <div id="loading-bar-back">
+    <div id="star">☆</div>
+    <div id="bar"></div>
+  </div>
+  <script>
+    window.onload = function() {
+        const loadingBar = document.getElementById("loading-bar-back");
+        const bar = document.getElementById("bar");
+        const star = document.getElementById("star");
+
+        bar.addEventListener("animationend", () => {
+            loadingBar.classList.add("hidden");
+            setTimeout(() => {
+                loadingBar.style.display = "none";
+            }, 500);
+        });
+    };
+  </script>
+
+  <div class="main_content">
+    <div class="search-head">
+        <h1>製品一覧</h1>
+        <hr>
+        <div class="head-btn">
+        <label><input class="check" type="checkbox" name="saling" onclick="checking()">廃盤モデルを除く</label>
+        <select name="jouken" id="order" onchange="sortItems()">
+            <option value="desc">新しい順</option>
+            <option value="asc">古い順</option>
+        </select>
+        <div class="input-wrapper">
+          <input id="text" type="text" name="word" placeholder="🔍キーワード検索">
+          <button type="button" class="clear-btn">✕</button>
+        </div>
+        <input id="submit" type = "button" value="検索" onclick="search()">
+        </div>
+    </div>
+    <script>
+      function checking(){
+        check_box = document.querySelector('.check');
+        ended = document.querySelectorAll('.end');
+        ended.forEach(element => {
+          if(check_box.checked){
+            element.style.display = 'none';
+          }else{
+            element.style.display = 'inline';
+          }
+        });
+        if(check_box.checked){
+          check_box.checked = true;
+        }else{
+          check_box.checked = false;
+        }
+        search();
+      }
+
+      function search(){
+        word = document.getElementById('text').value.trim();
+        keywords = word.split(/\s+/);
+        product = document.querySelectorAll('.product');
+        if(word != ''){
+          product.forEach(element => {
+            title = element.querySelector('.products_title').textContent.trim();
+            if(keywords.every(keyword => (title.includes(keyword)))){
+              element.style.display = 'list-item';
+            }else{
+              element.style.display = 'none';
+            }
+          });
+        }else{
+          product.forEach(element =>{
+            element.style.display = 'list-item';
+          })
+        }
+        sortItems();
+
+        check_box = document.querySelector('.check');
+        ended = document.querySelectorAll('.end');
+        if(check_box.checked){
+          product.forEach(element =>{
+            if(element.style.display =="list-item" 
+            && element.classList.contains('end')){
+              element.style.display = 'none';
+            } 
+          })
+        }
+      }
+
+      function sortItems() {
+        let order = document.getElementById('order').value;
+        let productList = document.getElementById('product-list');
+        let products = Array.from(productList.getElementsByClassName('product')); 
+
+        products.sort((a, b) => {
+            let idA = parseInt(a.getAttribute('data-id'));
+            let idB = parseInt(b.getAttribute('data-id'));
+            
+            if (order === 'asc') {
+                return idA-idB; 
+            } else {
+                return idB-idA;
+            }
+        });
+        // 並び替えた商品を再配置
+        products.forEach(product => productList.appendChild(product));
+      }
+      const textInput = document.getElementById('text');
+      const clearBtn = document.querySelector('.clear-btn');
+
+      // 入力時にクリアボタンの表示／非表示を切り替え
+      textInput.addEventListener('input', () => {
+        clearBtn.style.display = textInput.value.length ? 'block' : 'none';
+      });
+
+      // クリアボタンをクリックしたときに入力内容をリセット
+      clearBtn.addEventListener('click', () => {
+        textInput.value = '';
+        clearBtn.style.display = 'none';
+        textInput.focus();
+      });
+    </script>
+    <div class="products">
+        <ul id="product-list">
+            <li class="product" data-id="4">
+              <img src="image/top/products/a75ultra.jpg" alt="a75ultra">
+              <h4 class="products_title">星空キーボード</h4>
+              <button class="buy-btn" onclick="location.href='product1.html'">製品詳細</button>
+            </li>
+            <li class="product end" data-id="3">
+              <img src="image/top/products/v75.jpg" alt="v75">
+              <h4 class="products_title">レトロキーボード</h4>
+              <button class="buy-btn no-hover" style="background-color: darkgray; color: dimgray;">製造終了</button>
+            </li>
+            <li class="product end" data-id="2">
+                <img src="image/top/products/raven61.jpg" alt="raven61">
+                <h4 class="products_title">おさかなキーボード</h4>
+                <button class="buy-btn no-hover" style="background-color: darkgray; color: dimgray;">製造終了</button>
+              </li>
+            <li class="product end" data-id="1">
+                <img src="image/top/products/g75.jpg" alt="g75">
+                <h4 class="products_title">紅白キーボード</h4>
+                <button class="buy-btn no-hover" style="background-color: darkgray; color: dimgray;">製造終了</button>
+            </li>
+        </ul>
+    </div>
+  </div>
+
+    <footer>
+        <div class="footer_container">
+        <div class="footer_title">
+            <p>Company</p>
+        </div>
+        <ul>
+            <li>About Ykeyb</li>
+            <li>Contact Us</li>
+            <li>Blog</li>
+            <li>Discord Community</li>
+            <li>Official Partner</li>
+        </ul>
+        </div>
+        <div class="footer_container">
+        <div class="footer_title">
+            <p>Support</p>
+        </div>
+        <ul>
+            <li>My Order</li>
+            <li>Privacy Policy</li>
+            <li>User Manual</li>
+            <li>FAQ</li>
+            <li>Support Form</li>
+        </ul>
+        </div>
+    </footer>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+
+    <canvas id="starfield"></canvas>
+    <script src="js/script.js"></script>
+</body>

@@ -1,0 +1,58 @@
+.form_title{
+    margin: 0 auto;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+.names,.mail,.comment{
+    display: flex;
+    width: 50vw;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.name,.mail,.comment{
+    display: flex;
+    flex-direction: column;
+}
+.names{
+    gap: 20px;
+}
+.name{
+    width: calc((100% - 20px) / 2);
+}
+input, textarea{
+    background: #0b1b2b; /* 星空の背景色 */
+    color: #fff;         /* テキストの色 */
+    border: 2px solid #fff; /* 枠線 */
+    padding:10px;
+    border-radius: 10px;
+    font-size: large;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+input{
+    height: 3em;
+}
+textarea{
+    height: 13em;
+    resize: none;
+}
+input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+}
+.more-btn {
+    width: 30vw;
+    display: block;
+    font-size: large;
+    margin: 20px auto 0;
+    padding: 10px 30px;
+    background-color: var(--bg-color);
+    border: 1px solid gray;
+    border-radius: 5px;
+    color: #fff;
+    transition: background 0.3s;
+    overflow: hidden;
+}

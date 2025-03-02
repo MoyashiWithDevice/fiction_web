@@ -1,0 +1,385 @@
+/* トップイメージ */
+.topimg {
+    position: relative;
+    text-align: center;
+    animation: fadein 3s ease;
+  }
+
+  @keyframes fadein {
+    0% {
+       opacity: 0;
+    }
+    100% {
+       opacity: 100;
+    }
+ }
+  
+  .topimg img {
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+  }
+  
+  .topimg h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    text-shadow: 0 0 10px #fff;
+    white-space: nowrap;
+  }
+  #notif{
+    margin: 0 0 0 auto;
+  }
+  /* お知らせセクション */
+  .notification {
+    padding: 50px 20px;
+    background: rgba(0, 0, 50, 0.6);
+    text-align: center;
+  }
+
+  .notification ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .notification li {
+    width: 80%;
+    margin: 15px 0;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .date {
+    color: #ccc;
+    min-width: 120px;
+    text-align: right;
+    margin-right: 20px;
+  }
+  
+  .notif_title {
+    text-align: center;
+  }
+  
+  .more-btn {
+    width: 15%;
+    min-width: 210px;
+    font-size: large;
+    margin: 20px auto 0; 
+    padding: 10px 30px;
+    background-color: var(--bg-color);
+    border: 1px solid gray;
+    border-radius: 5px;
+    color: #fff;
+    transition: background 0.3s;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .about_me {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about_me span{
+    text-shadow: 0 0 10px #fff;
+  }
+
+  .about_me_content {
+    display: flex;
+    position: relative;
+  }
+
+  .image_container {
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .carousel {
+    width: 100%;
+    transition: opacity 1s ease-in-out; 
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .carousel.fade-out {
+    animation: flash-out 2s ease-out forwards;
+  }
+  
+  .carousel.fade-in {
+    animation: flash-in 2s ease-out forwards;
+  }
+
+  @keyframes flash-out{
+    0% {
+      filter: brightness(1);
+      opacity: 1;
+    }
+    50% {
+      filter: brightness(1.5);
+      opacity: 1;
+    }
+    100% {
+      filter: brightness(10); /* 白く光る */
+      opacity: 0;
+    }
+  }
+
+  @keyframes flash-in {
+    0% {
+      filter: brightness(10); /* 白く光る */
+      opacity: 0;
+    }
+    40% {
+      filter: brightness(1.5);
+      opacity: 1;
+    }
+    80% {
+      filter: brightness(1);
+      opacity: 1;
+    }
+    100%{
+      filter: brightness(1);
+      opacity: 1;
+    }
+  }
+
+
+  .image_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+  }
+
+  .ykeyb_is{
+    border-left: solid 3px white;
+    line-height: 1;
+    padding: 7px 0 7px 18px;
+  }
+  .text_container {
+    width: 50%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0, 0, 80, 0.6);
+  }
+
+  .subtitle, .about_me p {
+    text-align: left;
+  }
+
+  .subtitle {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+  }
+
+  .about_me p {
+    font-size: 1.2em;
+    line-height: 1.8;
+  }
+
+  .contact-btn {
+    width: 75%;
+    padding: 12px 30px;
+    margin-top: 25px;
+    background-color: var(--bg-color, #333);
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 18px;
+    position: relative;
+    text-shadow: white 0 0 30px;
+  }
+  .contact-btn::before {
+    content: '★';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 20px;
+    color: yellow;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+  }
+
+  .contact-btn:hover::before {
+    opacity: 0.7;
+    animation: star-move 1s linear infinite;
+  }
+
+  @keyframes star-move {
+    0% {
+      top: 0;
+      left: 5%;
+      transform: translate(-50%, -50%);
+    }
+    30% {
+      top: 0;
+      left: 95%;
+      transform: translate(-50%, -50%);
+    }
+    35% {
+      top: 10%;
+      left: 100%;
+      transform: translate(-50%, -50%);
+    }
+    45% {
+      top: 90%;
+      left: 100%;
+      transform: translate(-50%, -50%);
+    }
+    50% {
+      top: 100%;
+      left: 95%;
+      transform: translate(-50%, -50%);
+    }
+    80% {
+      top: 100%;
+      left: 5%;
+      transform: translate(-50%, -50%);
+      opacity: 0.8;
+    }
+    85% {
+      top: 90%;
+      left: 0;
+      transform: translate(-50%, -50%);
+      opacity: 0.8;
+    }
+    95% {
+      top: 10%;
+      left: 0;
+      transform: translate(-50%, -50%);
+    }
+    100% {
+      top: 0;
+      left: 5%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  .star-trail {
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    opacity: 0.5;
+    pointer-events: none;
+    animation: fade-out 1s forwards;
+  }
+  
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+  }
+
+  /* 斜めの線を実現 */
+  .about_me_content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 80, 0.6);
+    transform: translateX(-50%) skewX(-10deg);
+    transform-origin: top left;
+    z-index: -1;
+  }
+
+  
+  /* 製品セクション */
+  .products {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 20px;
+    background: rgba(0, 0, 50, 0.6);
+    text-align: center;
+  }
+  
+  .products ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .products li {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .products li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -120%;
+    width: 30%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-40deg);
+    animation: shine 2.5s infinite;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  @keyframes shine {
+    0% {
+      left: -150%;
+    }
+    20% {
+      left: 150%;
+    }
+    100% {
+      left: 150%;
+    }
+  }  
+  
+  .products img {
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #384878;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .products_title {
+    flex-grow: 1;
+    margin-top: 20px;
+    font-size: 1.5em;
+  }
+  
+  /* CSSの修正 */
+  .buy-btn { 
+    width: 30%;
+    min-width: 120px;
+    margin:15px auto 0;
+    padding: 10px 30px; 
+    background-color: var(--bg-color);
+    border:gray;
+    border-radius: 5px;
+    color: #fff; 
+    transition: background 0.8s; 
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }

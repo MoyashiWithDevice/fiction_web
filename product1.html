@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ykeyb</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/product1.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+</head>
+<body>
+  <div id="cursor" class="cursor">
+    <div class="cursor-inner">★</div>
+  </div>
+  <header>
+    <h2 class="title"><a href="top.html">Ykeyb</a></h2>
+    <ul class="nav-menu">
+      <li><a href="products.html">製品一覧</a></li>
+      <li><a href="form.html">お問い合わせ</a></li>
+      <li><a href="login.html">ログイン</a></li>
+    </ul>
+  </header>
+
+  <div class="main-page">
+    <div class="product-head">
+      <div class="all-images">
+        <img id="main-image" src="image/a75/topimg.jpg" alt="image">
+        <div class="images">
+          <img class=modal src="image/a75/topimg.jpg" alt="image">
+          <img class=modal src="image/a75/rgbsyoumen.jpg" alt="image">
+          <img class=modal src="image/a75/teimen.jpg" alt="image">
+          <img class=modal src="image/a75/haimen.jpg" alt="image">
+          <img class=modal src="image/a75/sokumen.jpg" alt="image">
+          <img class=modal src="image/a75/huzoku.jpg" alt="image">
+        </div>
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function(){
+          const modalImages = document.querySelectorAll(".modal");
+          const mainImage = document.getElementById("main-image");
+
+          modalImages.forEach(image=>{
+            image.addEventListener("click",function(){
+              mainImage.src = this.src;
+              mainImage.alt = this.alt;
+            });
+          });
+        });
+      </script>
+
+      <div class="product-title">
+        <h1 id="name">星空キーボード</h1>
+        <hr>
+        <h2 id="price">HK$1150</h2>
+        <p>オープン価格</p>
+        <p class="date">発売日：2025/02/29</p>
+        <h3 class="point">製品詳細</h3>
+        <ul class="point-list">
+          <li>75%レイアウトのUS配列キーボード</li>
+          <li>Rapid Trigger機能で0.01mm単位で設定可能</li>
+          <li>Gateron Jade Proスイッチ搭載</li>
+          <li>特許取得済み衝撃吸収スタンド搭載</li>
+        </ul>
+        <ul class="links">
+          <li class="x"><img src="image/a75/x.png"></li>
+          <li class="line"><img src="image/a75/line.png"></li>
+        </ul>
+      </div>
+      <div class="scroll-space"></div>
+    </div>
+
+    <div class="detail-block">
+      <div class="detail">
+        <button id="left-button" class="carousel-button"><</button>
+        <div class="detail-container" style="display: none;">
+          <img src="image/a75/jade.jpg" alt="switch">
+          <p>
+            Gateron製のJade Proスイッチを搭載<br>
+            打鍵時の麻雀牌の音が特徴
+          </p>
+        </div>
+        <div class="detail-container">
+          <img src="image/a75/knob.jpg" alt="keycap">
+          <p>
+            音量調節可能なノブを搭載<br>
+            画面を切り替えることなく音量が調整できます。
+          </p>
+        </div>
+        <div class="detail-container">
+          <img src="image/a75/touka.jpg" alt="keycap">
+          <p>
+            星空コンセプトの筐体デザインと<br>
+            星を彷彿とさせる部分透過式のキーキャップ
+          </p>
+        </div>
+        <button id="right-button" class="carousel-button">></button>
+      </div>
+    </div>
+    <script>
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // 全てのdetail-container要素を取得
+        const containers = document.querySelectorAll(".detail-container");
+        const leftButton = document.getElementById("left-button");
+        const rightButton = document.getElementById("right-button");
+
+        let currentIndex = 0;
+        let transitioning = false; // アニメーション中の連打防止用
+
+        // dots-containerを.detail要素内に動的生成（各dotはspan要素）
+        const detailElement = document.querySelector(".detail");
+        const detailBlock = document.querySelector(".detail-block");
+        const dotsContainer = document.createElement("span");
+        dotsContainer.className = "dots-container";
+        containers.forEach((_, index) => {
+          const dot = document.createElement("div");
+          dot.className = "dot";
+          if (index === currentIndex) {
+            dot.classList.add("active");
+          }
+          // dotクリック時にどのindexか判定するためのdata属性を追加
+          dot.dataset.index = index;
+          dotsContainer.appendChild(dot);
+        });
+        detailBlock.appendChild(dotsContainer);
+
+        // 表示状態を更新する関数（direction: "left" または "right"）
+        function updateDisplay(direction) {
+          // 全て非表示にしてから、currentIndexのみ表示する
+          containers.forEach((container, index) => {
+            container.style.display = (index === currentIndex) ? "flex" : "none";
+            // 以前のアニメーションクラスを除去
+            container.classList.remove("slide-in-left", "slide-in-right");
+          });
+
+          // 表示する要素にdirectionに応じたslide-inクラスを付与
+          if (direction === "left") {
+            containers[currentIndex].classList.add("slide-in-left");
+          } else if (direction === "right") {
+            containers[currentIndex].classList.add("slide-in-right");
+          }
+
+          // dotの更新
+          const dots = document.querySelectorAll(".dot");
+          dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+              dot.classList.add("active");
+            } else {
+              dot.classList.remove("active");
+            }
+          });
+
+          // アニメーション終了後、transition中フラグを解除（500msはアニメーション時間に合わせる）
+          setTimeout(() => {
+            containers[currentIndex].classList.remove("slide-in-left", "slide-in-right");
+            transitioning = false;
+          }, 500);
+        }
+
+        // 左ボタンのクリックイベント（前の要素へ移動）
+        leftButton.addEventListener("click", function () {
+          if (transitioning) return;
+          transitioning = true;
+          currentIndex = (currentIndex - 1 + containers.length) % containers.length;
+          updateDisplay("left");
+        });
+
+        // 右ボタンのクリックイベント（次の要素へ移動）
+        rightButton.addEventListener("click", function () {
+          if (transitioning) return;
+          transitioning = true;
+          currentIndex = (currentIndex + 1) % containers.length;
+          updateDisplay("right");
+        });
+
+        // dotクリックでも表示切替ができるようにする
+        dotsContainer.addEventListener("click", function (e) {
+          if (transitioning) return;
+          if (e.target.classList.contains("dot")) {
+            const targetIndex = parseInt(e.target.dataset.index, 10);
+            if (targetIndex !== currentIndex) {
+              transitioning = true;
+              // 移動方向の判定：targetIndex > currentIndexなら右方向、そうでなければ左方向
+              const direction = (targetIndex > currentIndex) ? "right" : "left";
+              currentIndex = targetIndex;
+              updateDisplay(direction);
+            }
+          }
+        });
+        // 初期表示更新
+        updateDisplay();
+      });
+    </script>
+    <div class="slider-blocks">
+      <h2>Rapid Trigger機能について</h2>
+      <div class="slider-block">
+        <div class="slider-graph">
+          <div class="sliderr">
+            <div class="bar"><div id="signal-bar"><div id="on_off">ON</div></div></div>
+            <div class="range">
+              <span><span id="slider-range"></span>mm</span>
+              <input type="range" id="slider" min="0.01" max="2" step="0.01" name="slider">
+            </div>
+          </div>
+        </div>
+        <p>
+          0.01mmに設定したとき、キーの高さが0.01mm変化するとすぐにキー入力が反映されます。<br>
+          <br>
+          スライダーを移動させて違いを確認してみましょう。
+        </p>
+      </div>
+    </div>
+    
+
+    <script>
+      // スライダーの値表示（変更なし）
+      const slider = document.getElementById('slider');
+      const value = document.getElementById('slider-range');
+      const setCurrentValue = (val) => {
+        value.innerText = val;
+      }
+      const rangeOnChange = (e) => {
+        setCurrentValue(e.target.value);
+      }
+      window.onload = () => {
+        // スライダーの値変更時に表示を更新
+        slider.addEventListener('input', rangeOnChange);
+        // ページ読み込み時の初期値をセット
+        setCurrentValue(slider.value);
+      }
+      
+      const signal = document.getElementById('signal-bar');
+      // signal-bar の前回の高さを取得（初期値）
+      let previousHeight = parseFloat(window.getComputedStyle(signal).height);
+      
+      // 変更点: 移動方向と基準値（baseline）を追跡するための変数を初期化
+      let lastDirection = null;  // 'up' または 'down'
+      let baseline = previousHeight; // 現在の移動開始時の高さ
+
+      const onoff = document.getElementById('on_off');
+  
+      // signal-bar の高さを定期的にチェックして、基準値からの累積変化で色を変更する
+      setInterval(() => {
+        const currentHeight = parseFloat(window.getComputedStyle(signal).height);
+        
+        // 変更点: 現在の移動方向（上昇 or 下降）を判断
+        let currentDirection;
+        if (currentHeight > previousHeight) {
+          currentDirection = 'up';
+        } else if (currentHeight < previousHeight) {
+          currentDirection = 'down';
+        } else {
+          currentDirection = lastDirection; // 変化がない場合は直前の方向を維持
+        }
+        
+        // 変更点: 移動方向が変わった場合、基準値をリセット
+        if (currentDirection !== lastDirection) {
+          baseline = previousHeight;
+          lastDirection = currentDirection;
+        }
+        
+        // 変更点: スライダーの値（mm）をピクセルに換算（1mm = 100px と仮定）
+        const thresholdPx = parseFloat(slider.value) * 100;
+        
+        // 変更点: 基準値からの累積変化が thresholdPx を超えたかで色を変更
+        if (currentDirection === 'up') {
+          if ((currentHeight - baseline) >= thresholdPx) {
+            // signal-bar が上方向に thresholdPx 以上上昇した場合、色を赤に変更
+            signal.style.backgroundColor = 'lime';
+            onoff.style.color = 'lime';
+            onoff.textContent = 'ON';
+          }
+        } else if (currentDirection === 'down') {
+          if ((baseline - currentHeight) >= thresholdPx) {
+            // signal-bar が下方向に thresholdPx 以上下降した場合、色を緑に変更
+            signal.style.backgroundColor = 'red';
+            onoff.style.color = 'red';
+            onoff.textContent = 'OFF';
+          }
+        }
+        
+        // 前回の高さを更新
+        previousHeight = currentHeight;
+      }, 10); // 10ミリ秒ごとにチェック
+    </script>
+
+    <div class="recommend">
+      <h2>他の製品を見る</h2>
+      <div class="products">
+        <ul>
+            <li>
+              <img src="image/top/products/v75.jpg" alt="v75">
+              <h4 class="products_title">レトロキーボード</h4>
+                <button class="buy-btn no-hover" style="background-color: darkgray; color: dimgray;">製造終了</span>
+            </li>
+            <li>
+                <img src="image/top/products/raven61.jpg" alt="raven61">
+                <h4 class="products_title">おさかなキーボード</h4>
+                <button class="buy-btn no-hover" style="background-color: darkgray; color: dimgray;">製造終了</span>
+              </li>
+            <li>
+                <img src="image/top/products/g75.jpg" alt="g75">
+                <h4 class="products_title">紅白キーボード</h4>
+                <button class="buy-btn no-hover" style="background-color: darkgray; color: dimgray;">製造終了</span>
+            </li>
+          </ul>
+    </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer_container">
+      <div class="footer_title">
+        <p>Company</p>
+      </div>
+      <ul>
+        <li>About Ykeyb</li>
+        <li>Contact Us</li>
+        <li>Blog</li>
+        <li>Discord Community</li>
+        <li>Official Partner</li>
+      </ul>
+    </div>
+    <div class="footer_container">
+      <div class="footer_title">
+        <p>Support</p>
+      </div>
+      <ul>
+        <li>My Order</li>
+        <li>Privacy Policy</li>
+        <li>User Manual</li>
+        <li>FAQ</li>
+        <li>Support Form</li>
+      </ul>
+    </div>
+  </footer>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+
+  <canvas id="starfield"></canvas>
+  <script src="js/script.js"></script>
+</body>

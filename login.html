@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ykeyb</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+</head>
+<body>
+  <div id="cursor" class="cursor">
+    <div class="cursor-inner">★</div>
+  </div>
+  <header>
+    <h2 class="title"><a href="top.html">Ykeyb</a></h2>
+    <ul class="nav-menu">
+      <li><a href="products.html">製品一覧</a></li>
+      <li><a href="form.html">お問い合わせ</a></li>
+      <li><a href="login.html">ログイン</a></li>
+    </ul>
+  </header>
+
+  <div id="loading-bar-back">
+    <div id="star">☆</div>
+    <div id="bar"></div>
+  </div>
+  <script>
+    window.onload = function() {
+        const loadingBar = document.getElementById("loading-bar-back");
+        const bar = document.getElementById("bar");
+        const star = document.getElementById("star");
+
+        // アニメーション終了後に非表示にする
+        bar.addEventListener("animationend", () => {
+            loadingBar.classList.add("hidden");
+            setTimeout(() => {
+                loadingBar.style.display = "none";
+            }, 500); // フェードアウト後に完全非表示
+        });
+    };
+  </script>
+
+
+  <div class="main_content">
+    <div class="form">
+      <h1 class="form_title">ログイン</h1>
+      <form onsubmit="handleSubmit(event)" id="login-form">
+        <div class="name">
+        <label for="name">ユーザ名</label>
+        <input type="text" name="name" placeholder="user1">
+        </div>
+ 
+        <div class="mail">
+          <label for="mail">パスワード</label>
+        <input type="text" name="mail" placeholder="123456">
+        </div>
+
+        <div class="robot">
+          <div class="robot-in">
+            <div class="check">
+              <input type="checkbox" name="robot" id="robot-check" onclick="robotcheck()">
+              <h2 id="loading-icon">↷</h2>
+            </div>
+            <label for="robot">私はロボットではあり<br>ません。</label>
+            <div class="captcha-icon">
+              <h1>🔄</h1>
+              <p>reCAPTCHA</p>
+            </div>
+          </div>
+        </div>
+        <script>
+          function robotcheck(){
+            let checkbox = document.getElementById('robot-check');
+            let loadicon = document.getElementById('loading-icon');
+            if(!checkbox.checked){
+              checkbox.checked = false;
+            }else{
+              loadicon.style.display = 'block';
+              checkbox.style.display = 'none';
+              // アイコンを回転
+              loadicon.classList.add("rotate");
+
+              // 1秒後にチェックを入れる
+              setTimeout(() => {
+                loadicon.style.display = 'none';
+                checkbox.checked = true;
+                checkbox.style.display = 'block';
+                loadicon.classList.remove("rotate");
+              }, 1800);
+            }
+          }
+        </script>
+
+        <input class="more-btn" type="submit" value="送信する">
+        <div class="sign-up">
+            <p>アカウントをお持ちではありませんか？<a style="color: #0000EE;
+            text-decoration: underline; cursor: pointer;" >サインアップはこちら</a></p>
+        </div>
+        <div class="next-login">
+            <div class="box">
+                <label><input type="checkbox" name="next">ログイン状態を保存する</label>
+            </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script>
+    index = 0;
+    function handleSubmit(event) {
+      event.preventDefault(); // ページリロードを防ぐ
+      document.getElementById('captcha').style.display = 'block'; // 要素を表示
+      document.getElementById('captcha-input').value='';
+      images = [
+        "image/login/captcha3.jpg",
+        "image/login/captcha.jpg",
+        "image/login/captcha2.jpg",
+        "image/login/captcha1.jpg"
+      ]
+
+      image = document.getElementById('captchaImage');
+      image.src = images[index%images.length];
+      index++;
+
+      submitbtn = document.querySelector('.more-btn');
+      submitbtn.disabled = true;
+    }
+    </script>
+  <div class="captcha" id="captcha" style="display: none;">
+    <div class="captcha-content">
+        <img src="image/login/captcha.jpg" alt="captcha-image" id="captchaImage">
+        <div class="auth-text">
+            <label for="captcha-input">画像に表示されている文字を入力してください。</label>
+            <input type="text" id="captcha-input" placeholder="Type the text">
+            <input type="button" onclick="failed()" value="認証">
+        </div>
+    </div>
+  </div>
+  <div id="login-failed" style="display: none;">
+    <h1>❗ログインに失敗しました。</h1>
+    <button onclick="exitmodal()">閉じる</button>
+  </div>
+  <script>
+    function failed(){
+      document.getElementById('captcha').style.display = 'none';
+      document.getElementById('login-failed').style.display = 'block';
+    }
+    function exitmodal(){
+      document.getElementById('login-failed').style.display = 'none';
+      document.getElementById('login-form').reset();
+
+      submitbtn = document.querySelector('.more-btn');
+      submitbtn.disabled = false;
+    }
+  </script>
+  <footer>
+    <div class="footer_container">
+      <div class="footer_title">
+        <p>Company</p>
+      </div>
+      <ul>
+        <li>About Ykeyb</li>
+        <li>Contact Us</li>
+        <li>Blog</li>
+        <li>Discord Community</li>
+        <li>Official Partner</li>
+      </ul>
+    </div>
+    <div class="footer_container">
+      <div class="footer_title">
+        <p>Support</p>
+      </div>
+      <ul>
+        <li>My Order</li>
+        <li>Privacy Policy</li>
+        <li>User Manual</li>
+        <li>FAQ</li>
+        <li>Support Form</li>
+      </ul>
+    </div>
+  </footer>
+
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+
+  <canvas id="starfield"></canvas>
+  <script src="js/script.js"></script>
+</body>

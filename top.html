@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ykeyb</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/top.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+</head>
+<body>
+  <div id="cursor" class="cursor">
+    <div class="cursor-inner">★</div>
+  </div>
+  <header>
+    <h2 class="title"><a href="top.html">Ykeyb</a></h2>
+    <ul class="nav-menu">
+      <li><a href="products.html">製品一覧</a></li>
+      <li><a href="form.html">お問い合わせ</a></li>
+      <li><a href="login.html">ログイン</a></li>
+    </ul>
+  </header>
+  
+  <div class="main_content">
+    <div class="topimg">
+      <img src="image/top/topimg.jpg" alt="topimg">
+      <h1>
+        こだわりの一台で<br>
+        コーディング時間を<br>
+        3分に。
+      </h1>
+    </div>
+    <div class="notification fade-in">
+      <h2 class="subtitle">お知らせ</h2>
+      <ul>
+        <li><span class="date">2025.02.27</span><span class="notif_title">星空キーボードが新発売！</span></li>
+        <li><span class="date">2025.02.16</span><span class="notif_title">レトロキーボードの製造終了のお知らせ</span></li>
+        <li><span class="date">2025.02.10</span><span class="notif_title">サイトのメンテナンスについて</span></li>
+      </ul>
+      <button type="button" class="more-btn">もっと見る</button>
+    </div>
+    <div class="about_me fade-in">
+      <div class="about_me_content">
+        <div class="image_container">
+          <img class="carousel fade-in" src="image/top/carousel/G75JIS.jpg" id="carouselImage">
+        </div>
+        <div class="text_container">
+          <h2 class="subtitle ykeyb_is"><span>Ykeyb</span>とは</h2>
+          <p>
+            キーボードをお探しのあなたへ<br>
+            あなたにあった最高の一台を提供します。<br><br>
+            <span>Ykeyb</span>は国内で入手困難な海外企業のキーボードを取り扱う国内代理店です。<br>
+            気になる製品があれば、問い合わせフォームよりお送りください。
+          </p>
+          <button type="button" class="contact-btn" onclick="location.href='form.html'">問い合わせフォームはこちら</button>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="products fade-in">
+      <h2 class="subtitle">製品一覧</h2>
+      <ul>
+        <li>
+          <img src="image/top/products/a75ultra.jpg" alt="a75ultra">
+          <h4 class="products_title">星空キーボード</h4>
+          <button class="buy-btn" onclick="location.href='product1.html'">製品詳細</span>
+        </li>
+        <li>
+          <img src="image/top/products/raven61.jpg" alt="raven61">
+          <h4 class="products_title">おさかなキーボード</h4>
+          <button class="buy-btn no-hover" style="background-color:darkgray; color: dimgray;">製造終了</span>
+        </li>
+        <li>
+          <img src="image/top/products/v75.jpg" alt="v75">
+          <h4 class="products_title">レトロキーボード</h4>
+          <button class="buy-btn no-hover" style="background-color: darkgray; color: dimgray;">製造終了</span>
+        </li>
+      </ul>
+      <button type="button" class="more-btn" onclick="location.href='products.html'">製品一覧はこちら</button>
+    </div>
+  </div>
+  <footer>
+    <div class="footer_container">
+      <div class="footer_title">
+        <p>Company</p>
+      </div>
+      <ul>
+        <li>About Ykeyb</li>
+        <li>Contact Us</li>
+        <li>Blog</li>
+        <li>Discord Community</li>
+        <li>Official Partner</li>
+      </ul>
+    </div>
+    <div class="footer_container">
+      <div class="footer_title">
+        <p>Support</p>
+      </div>
+      <ul>
+        <li>My Order</li>
+        <li>Privacy Policy</li>
+        <li>User Manual</li>
+        <li>FAQ</li>
+        <li>Support Form</li>
+      </ul>
+    </div>
+  </footer>
+
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+
+  <canvas id="starfield"></canvas>
+  <script src="js/script.js"></script>
+  <script>
+
+    const images = [
+      'image/top/carousel/G75JIS.jpg',
+      'image/top/carousel/made68-2.jpg',
+      'image/top/carousel/k64h3.jpg'
+    ];
+
+    let currentImageIndex = 0;
+    const carouselImage = document.getElementById('carouselImage');
+
+    function showNextImage() {
+      carouselImage.classList.remove('fade-in');
+      carouselImage.classList.add('fade-out');
+
+      setTimeout(() => {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        carouselImage.src = images[currentImageIndex];
+
+        carouselImage.classList.remove('fade-out');
+        carouselImage.classList.add('fade-in');
+      }, 1000);
+    }
+    setInterval(showNextImage, 5000);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactBtn = document.querySelector('.contact-btn');
+
+      contactBtn.addEventListener('mouseover', () => {
+        const starTrailInterval = setInterval(() => {
+          const starTrail = document.createElement('div');
+          starTrail.className = 'star-trail';
+          starTrail.textContent = '★';
+
+          const rect = contactBtn.getBoundingClientRect();
+          const position = Math.random() * 100;
+
+          if (position < 25) {
+            starTrail.style.top = '0';
+            starTrail.style.left = `${position * 4}%`;
+          } else if (position < 50) {
+            starTrail.style.top = `${(position - 25) * 4}%`;
+            starTrail.style.left = '100%';
+          } else if (position < 75) {
+            starTrail.style.top = '100%';
+            starTrail.style.left = `${(75 - position) * 4}%`;
+          } else {
+            starTrail.style.top = `${(100 - position) * 4}%`;
+            starTrail.style.left = '0';
+          }
+
+          contactBtn.appendChild(starTrail);
+
+          setTimeout(() => {
+            starTrail.remove();
+          }, 1000);
+        }, 100);
+
+        contactBtn.addEventListener('mouseout', () => {
+          clearInterval(starTrailInterval);
+        }, { once: true });
+      });
+    });
+  </script>
+</body>
+</html>

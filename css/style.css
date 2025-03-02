@@ -1,0 +1,288 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html,body,a,input,button,label,select{
+    cursor: none;
+  }
+  .cursor {
+    position: fixed;
+    top: -14px;
+    left: -12px;
+    pointer-events: none;
+    z-index: 1001;
+    transform: translate(-50%, -50%);
+  }
+  
+  .cursor-inner {
+    font-size: 25px;
+    color: white;
+    transform-origin: center center;
+    transition: color 0.5s;
+    position: relative;
+  }
+  
+  /* 輝き用の疑似要素（必要に応じて調整） */
+  .cursor-inner::before {
+    content: "★";
+    position: absolute;
+    top: -15px;
+    left: -10px;
+    font-size: 50px;
+    color: white;
+    opacity: 0.5;
+    filter: blur(10px);
+    z-index: -1;
+    transform-origin: inherit;
+  }
+  
+  /* リンクにホバー時、内側の要素に回転アニメーションを適用 */
+  .cursor--hover .cursor-inner {
+    color: yellow;
+    animation: rotate-cursor 0.75s ease-in-out;
+  }
+
+  @keyframes rotate-cursor {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
+  }
+  .cursor-star {
+    position: fixed;
+    pointer-events: none;
+    color: white;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+    animation: star-fade 1.3s forwards;
+    z-index: 1000;
+  }
+  
+  @keyframes star-fade {
+    0% {
+      opacity: 0.8;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(calc(-50% + var(--offset-x)), calc(-50% + var(--offset-y))) scale(0.7);
+    }
+  }
+  a{
+    text-decoration: none;
+    color: white;
+  }
+  
+  /* 背景と基本フォント設定 */
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #fff;
+    background-color: #000;
+    overflow-x: hidden;
+  }
+  
+  /* ヘッダー */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 50, 0.8);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .title {
+    font-size: 2em;
+    text-shadow: 0 0 10px #fff;
+  }
+  
+  .nav-menu {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-menu li {
+    margin-left: 30px;
+    position: relative;
+  }
+  
+  .nav-menu li::after {
+    content: '';
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+  }
+  
+  .nav-menu li:hover::after {
+    width: 100%;
+  }
+  #loading-bar-back{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;        /* 画面全体の幅 */
+    height: 100%;       /* 画面全体の高さ */
+    background: rgba(0, 0, 50, 1);  /* 半透明の背景 */
+    z-index: 1003;      /* 他の要素より前に表示 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #bar{
+    max-width: 30%;
+    height: 4px;
+    background: white;
+    animation: loading-animation 3s ease-in-out forwards;
+  }
+  /* アニメーション */
+  @keyframes loading-animation {
+    0% { width: 0%; }
+    10% { width: 1%; }
+    25%{ width: 6%; }
+    45%,90%{ width: 25%;}
+    100% { width: 30%; }
+  }
+  #star{
+    font-size: 200px;
+    animation: rotate-star 3s ease-in-out;
+  }
+  @keyframes rotate-star {
+    0%{rotate: 0deg;}
+    23%,33%{rotate: 360deg;}
+    56%,66%{rotate: 720deg;}
+    89%,99%,100%{rotate: 1080deg;}
+  }
+  .hidden{
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+  }
+  
+  /* メインコンテンツ */
+  .main_content {
+    margin-top: 100px;
+  }
+  
+  /* フッター */
+  footer {
+    margin-top: 10px;
+    padding: 40px 20px;
+    background: rgba(0, 0, 50, 0.8);
+    display: flex;
+  }
+  
+  .footer_title{
+    margin-bottom: 30px;
+  }
+
+  .footer_container {
+    margin: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .footer_title p {
+    position:relative;
+    font-size: 1.8em;
+  }
+  .footer_title p::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    background-color: white;
+  }
+  
+  footer ul {
+    list-style: none;
+    flex-direction: column;
+  }
+  
+  footer li {
+    transition: color 0.3s;
+    white-space: nowrap;
+    margin: 0;
+    padding: 5px 0; 
+  }
+  
+  footer li:hover {
+    color: #ffd700;
+  }
+  
+  /* 星空アニメーション */
+  #starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 120%;
+    z-index: -1;
+    transform: translate(0, 0);
+  } 
+
+  /* 流れ星要素の設定 */
+  .shooting-star {
+    position: fixed;
+    /* 初期位置：画面右上から始まる */
+    top: -5px;
+    right: -5px;
+    width: 10px;
+    height: 10px;
+    background: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 8px 5px rgba(212, 219, 0, 0.7);
+    opacity: 0;
+    /* 5秒周期でアニメーションを実行 */
+    animation: shooting 4s linear infinite;
+  }
+  
+  /* アニメーションの定義 */
+  @keyframes shooting {
+    /* 最初の85%は流れ星は非表示 */
+    0%, 50% {
+      opacity: 0;
+      transform: translate(0, 0);
+    }
+    /* 85%あたりで出現し始める */
+    65%,75% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+    /* 90%で中間地点（画面中央あたり）まで移動 */
+    85% {
+      opacity: 1;
+      transform: translate(-55vw, 55vh);
+    }
+    /* 95%で最終位置（左下）に到達しつつフェードアウト */
+    95% {
+      opacity: 0;
+      transform: translate(-105vw, 105vh);
+    }
+    /* 100%は次のループのために準備 */
+    100% {
+      opacity: 0;
+    }
+  }
+
+  :root {
+    /* these are used in JS as well! */
+    --bg-color: rgba(7, 31, 210, 0.318);
+    --ripple-color: #c2ca50;
+  }

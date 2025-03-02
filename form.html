@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ykeyb</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/form.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/favicon.ico">
+</head>
+<body>
+  <div id="cursor" class="cursor">
+    <div class="cursor-inner">★</div>
+  </div>
+  <header>
+    <h2 class="title"><a href="top.html">Ykeyb</a></h2>
+    <ul class="nav-menu">
+      <li><a href="products.html">製品一覧</a></li>
+      <li><a href="form.html">お問い合わせ</a></li>
+      <li><a href="login.html">ログイン</a></li>
+    </ul>
+  </header>
+
+  <div id="loading-bar-back">
+    <div id="star">☆</div>
+    <div id="bar"></div>
+  </div>
+  <script>
+    window.onload = function() {
+        const loadingBar = document.getElementById("loading-bar-back");
+        const bar = document.getElementById("bar");
+        const star = document.getElementById("star");
+
+        // アニメーション終了後に非表示にする
+        bar.addEventListener("animationend", () => {
+            loadingBar.classList.add("hidden");
+            setTimeout(() => {
+                loadingBar.style.display = "none";
+            }, 500); // フェードアウト後に完全非表示
+        });
+    };
+  </script>
+
+
+  <div class="main_content">
+    <div class="form">
+      <h1 class="form_title">お問い合わせフォーム</h1>
+      <form action="" method="post">
+        <div class="names">
+          <div class="name">
+            <label for="name">姓</label>
+          <input type="text" name="name" placeholder="キーボード">
+          </div>
+          <div class="name">
+            <label for="name2">名</label>
+          <input type="text" name="name2" placeholder="太郎">
+          </div>
+        </div>
+        
+        <div class="mail">
+          <label for="mail">メールアドレス</label>
+        <input type="text" name="mail" placeholder="mail@Ykeyb.com">
+        </div>
+        
+        <div class="comment">
+          <label for="comment">お問い合わせ内容</label>
+        <textarea name="comment" placeholder="問い合わせ内容を入力"></textarea>
+        </div>
+        <input class="more-btn" type="submit" value="送信する" disabled>
+      </form>
+    </div>
+  </div>
+  <footer>
+    <div class="footer_container">
+      <div class="footer_title">
+        <p>Company</p>
+      </div>
+      <ul>
+        <li>About Ykeyb</li>
+        <li>Contact Us</li>
+        <li>Blog</li>
+        <li>Discord Community</li>
+        <li>Official Partner</li>
+      </ul>
+    </div>
+    <div class="footer_container">
+      <div class="footer_title">
+        <p>Support</p>
+      </div>
+      <ul>
+        <li>My Order</li>
+        <li>Privacy Policy</li>
+        <li>User Manual</li>
+        <li>FAQ</li>
+        <li>Support Form</li>
+      </ul>
+    </div>
+  </footer>
+
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+  <div class="shooting-star"></div>
+
+  <canvas id="starfield"></canvas>
+  <script src="js/script.js"></script>
+</body>

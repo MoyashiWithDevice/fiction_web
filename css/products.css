@@ -1,0 +1,190 @@
+.search-head{
+    padding: 0 30px;
+}
+#text{
+    width: 400px;
+    margin-right: 10px;
+}
+.search-head select{
+    margin-right: 10px;
+}
+.search-head .check{
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+.search-head input{
+  height: 3em;
+}
+.search-head input, .search-head select {
+    background: #0b1b2b; /* 星空の背景色 */
+    color: #fff;         /* テキストの色 */
+    border: 2px solid #fff; /* 枠線 */
+    padding: 10px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* 輝く効果 */
+    transition: all 0.3s ease;
+}
+.head-btn{
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.head-btn label{
+  display: flex;
+  margin-right: 10px;
+}
+
+
+/* フォーカス時に輝く */
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+/* チェックボックスに星空の効果 */
+input[type="checkbox"]{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  accent-color: #ffd700; /* チェックボックスやラジオボタンの色 */
+  background: transparent; /* 背景を透明に */
+  border: 2px solid #fff;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  position: relative;
+}
+input[type="checkbox"]:checked{
+  background: #024384;
+}
+input[type="checkbox"]:checked::before {
+    content: "★";  /* チェックされた場合、星マークを表示 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    color: #ffd700;  /* ゴールドの星 */
+}
+
+/* セレクトボックスのスタイル */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #0b1b2b;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="white"%3E%3Cpath fill-rule="evenodd" d="M10 15a1 1 0 01-.707-.293l-5-5a1 1 0 111.414-1.414L10 12.586l4.293-4.293a1 1 0 111.414 1.414l-5 5A1 1 0 0110 15z" clip-rule="evenodd"/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+/* セレクトボックスのドロップダウンメニュー */
+select option {
+    background: linear-gradient(#0b1b2b,#384878);
+    color: #fff;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+/* セレクトボックスのホバー時 */
+select option:hover {
+    background: #2d3f54;
+}
+.input-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.clear-btn {
+  position: absolute;
+  right: 1.5em;
+  top: 25%;
+  color: lightgray;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  display: none; 
+}
+
+.products {
+    padding: 60px 20px;
+    background: rgba(0, 0, 50, 0.6);
+    text-align: center;
+  }
+  
+  .products ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .products li {
+    width: 30%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding:10px;
+  }
+  .products li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -120%;
+    width: 30%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-40deg);
+    animation: shine 2.5s infinite;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  @keyframes shine {
+    0% {
+      left: -150%;
+    }
+    20% {
+      left: 150%;
+    }
+    100% {
+      left: 150%;
+    }
+  }  
+  
+  .products img {
+    width: 100%;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #384878;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .products_title {
+    margin-top: 20px;
+    font-size: 1.5em;
+  }
+  
+  /* CSSの修正 */
+  .buy-btn { 
+    display: inline-block;
+    margin-top: 15px; 
+    padding: 10px 30px; 
+    /* background: #00008b;  */
+    background-color: var(--bg-color);
+    border:gray;
+    border-radius: 5px; 
+    color: #fff; 
+    transition: background 0.8s; 
+  }

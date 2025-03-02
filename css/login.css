@@ -1,0 +1,221 @@
+.form_title{
+    margin: 0 auto;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto 20px;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 25vw;
+    padding: 20px 10px;
+    background:linear-gradient(#004e9b,#0b1b2b);
+}
+.name,.mail,.comment{
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    margin: 20px auto 0;
+}
+input, textarea{
+    background: #0b1b2b; /* 星空の背景色 */
+    color: #fff;         /* テキストの色 */
+    border: 2px solid #fff; /* 枠線 */
+    padding:10px;
+    border-radius: 10px;
+    font-size: large;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+input{
+    height: 2.5em;
+}
+textarea{
+    height: 10em;
+    resize: none;
+}
+input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+}
+.check{
+    margin: 0 20px;
+}
+.robot{
+    display: flex;
+    width: 60%;
+    background-color: lightgray;
+    border: 2px solid gray;
+    border-radius: 10px;
+    color: black;
+    margin: 15px auto;
+    align-items: center;
+}
+.robot-in{
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+}
+.robot input{
+    transform: scale(1.5);
+    margin: 0 auto;
+    box-shadow: none;
+}
+#robot-check{
+    padding:12px;
+}
+#loading-icon {
+    font-weight: 900;
+    color: #0288d1;
+    font-size: 15px;
+    display: none;
+    margin: 0;
+    animation: rotate 1.8s linear infinite;
+}
+
+@keyframes rotate {
+    0%{ transform: rotate(0deg);}
+    30%,50%{ transform: rotate(150deg);}
+    65%{ transform: rotate(240deg);}
+    80%{ transform: rotate(320deg);}
+    90%,100%{ transform: rotate(450deg);}
+}
+
+.sign-up{
+    display: flex;
+    margin:5px auto;
+    font-size: medium;
+}
+.next-login{
+    margin: 10px auto;
+    display: flex;
+}
+.next-login input{
+    height: 1em;
+    padding: 10px;
+}
+.next-login label{
+    margin-top: 5px;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+}
+.box{
+    margin: 0 auto;
+}
+.box input{
+    margin-right: 8px;
+}
+.more-btn {
+    width: 15vw;
+    display: block;
+    font-size: large;
+    margin: 20px auto 0;
+    padding: 10px 30px;
+    background-color: var(--bg-color);
+    border: 1px solid gray;
+    border-radius: 5px;
+    color: #fff;
+    transition: background 0.3s;
+    overflow: hidden;
+  }
+  .captcha {
+    border: 2px solid #444; /* CAPTCHA全体の枠線 */
+    background-color: #f9f9f9; /* 背景色 */
+    border-radius: 10px;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* ボックスの影 */
+    z-index: 1000;
+}
+
+.captcha-content {
+    text-align: center;
+}
+
+.captcha-content img {
+    display: block;
+    margin: 0 auto 10px;
+    border: 1px solid #ccc; /* CAPTCHA画像の枠線 */
+    border-radius: 5px;
+}
+.captcha-icon{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.captcha-icon p{
+    font-size: 9px;
+}
+.auth-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-text label {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.auth-text input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1); /* 内側の影 */
+}
+
+.auth-text input[type="button"] {
+    background-color: #0288d1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.auth-text input[type="button"]:hover {
+    background-color: #026ca0;
+}
+
+#login-failed{
+    border: 2px solid white; /* CAPTCHA全体の枠線 */
+    background:linear-gradient(45deg,#004e9b,#0b1b2b); /* 背景色 */
+    border-radius: 10px;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* ボックスの影 */
+    z-index: 1000;
+    text-align: center;
+}
+
+#login-failed h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    background-color: #e0f7fa; /* 薄い青背景 */
+    padding: 10px;
+    border-radius: 5px;
+}
+#login-failed button{
+    background-color: #0288d1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}

@@ -1,0 +1,330 @@
+.main-page{
+    display: flex;
+    flex-direction: column;
+    padding:30px;
+    margin: 100px auto;
+}
+.product-head{
+    display: flex;
+    gap: 20px;
+}
+.all-images{
+    display: flex;
+    flex-direction: column;
+    width: 55vw;
+}
+.main-image{
+    width: 100%;
+}
+.images{
+    width: 100%;
+    margin: 10px;
+    margin-left: 0;
+}
+.modal{
+  display: inline-block;
+  width: calc((100% - 25px) / 6);
+  position:relative;
+  background: white;
+  opacity: 1;
+}
+
+.modal:hover {
+  opacity: 0.4;
+}
+.product-title{
+    width: 40vw;
+}
+#name{
+    font-size: 60px;
+}
+#price{
+    margin-top: 20px;
+    font-size: 45px;
+}
+.date{
+    margin-top: 20px;
+    font-size: 20px;
+}
+.point{
+    margin-top: 100px;
+    font-size: 35px;
+}
+.point-list{
+    margin-left: 20px;
+    line-height: 50px;
+    font-size: 25px;
+}
+.links{
+    margin-top: 40px;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.links li{
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: 0;
+    padding: 5px;
+}
+.links img{
+    width: 50px;
+    height: 50px;
+}
+    .x{
+        background-color: black;
+    }
+    .line{
+        background-color: rgb(0, 192, 0);
+    }
+.detail-block{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: rgba(0, 0, 50, 0.6);
+    width: 100%;
+}
+.detail{
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.detail-container{
+    display: flex;
+    width: 100%;
+    padding: 40px;
+    align-items: center;
+    transition: transform 0.5s ease-out, opacity 0.5s;
+}
+.detail-container img{
+    width: 50%;
+}
+.detail-container p{
+    width: 50%;
+    font-size: 25px;
+    line-height: 35px;
+    margin-left: 50px;
+}
+
+.recommend{
+    margin-top: 100px;
+}
+.products {
+    padding: 60px 20px;
+    background: rgba(0, 0, 50, 0.6);
+    text-align: center;
+  }
+  
+  .products ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .products li {
+    width: 30%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding:10px;
+  }
+  .products li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -120%;
+    width: 30%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: skewX(-40deg);
+    animation: shine 2.5s infinite;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  @keyframes shine {
+    0% {
+      left: -150%;
+    }
+    20% {
+      left: 150%;
+    }
+    100% {
+      left: 150%;
+    }
+  }  
+  
+  .products img {
+    width: 100%;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: #384878;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .products_title {
+    margin-top: 20px;
+    font-size: 1.5em;
+  }
+  
+  /* CSSの修正 */
+  .buy-btn { 
+    display: inline-block;
+    margin-top: 15px; 
+    padding: 10px 30px; 
+    /* background: #00008b;  */
+    background-color: var(--bg-color);
+    border:gray;
+    border-radius: 5px; 
+    color: #fff; 
+    transition: background 0.8s; 
+  }
+
+  /* dotインジケータの基本スタイル */
+.dots-container {
+    display: flex;
+    text-align: center;
+    margin-top: 10px;
+    margin: 0 auto;
+  }
+  .dot {
+    display: flex;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+  }
+  .dot.active {
+    opacity: 1;
+  }
+  
+  /* 右からのスライドイン */
+  .slide-in-right {
+    animation: slideInRight 0.5s forwards;
+  }
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  .carousel-button{
+    display: inline-block;
+    padding: 20px 10px; 
+    background-color: var(--bg-color);
+    border:gray;
+    border-radius: 5px; 
+    color: #fff; 
+    transition: background 0.8s; 
+  }
+  
+  /* 左からのスライドイン */
+  .slide-in-left {
+    animation: slideInLeft 0.5s forwards;
+  }
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  .slider-blocks{
+    margin-top: 75px;
+    background-image: url("image/a75/finger.jpg");
+    background-repeat: no-repeat; /* 背景画像を繰り返し表示させない */
+    background-size: cover; /* 背景画像を全画面表示 */
+    background-position: center; /* 背景画像の表示位置を中央に */
+  }
+  .slider-block{
+    width: 60vw;
+    margin-top: 200px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .bar{
+    width: 30px;
+    height: 215px;
+    background:linear-gradient(darkgray,gray);
+  }
+  .slider-graph{
+    width: 75%;
+    display: flex;
+    align-items: center;
+  }
+  .sliderr{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+  #signal-bar{
+    position: absolute;
+    width: 30px;
+    height: 0px;
+    background-color: lime;
+    animation: signal_motion 3s infinite;
+  }
+  #on_off{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    font-weight: 1000;
+    z-index: -1;
+    color: lime;
+    opacity: 0.6;
+  }
+  @keyframes signal_motion {
+    0%{height: 0px;}
+    45%,50%{height: 215px;}
+    95%,100%{height: 0px;}
+  }
+  .range{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #slider{
+    rotate: 90deg;
+    width: 200px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, #000428, #004e92);
+    border-radius: 10px;
+    outline: none;
+  }
+  #slider::-webkit-slider-thumb {
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    border: 2px solid white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+  .slider-block span{
+    margin: 0;
+    padding: 0;
+    margin-left: 50px;
+    font-size: 16px;
+    color: white;
+  }
+  .slider-block p{
+    font-size: 25px;
+  }
